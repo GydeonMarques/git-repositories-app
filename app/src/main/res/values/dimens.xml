@@ -1,3 +1,18 @@
 <resources>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_margin_min">8dp</dimen>
+    <dimen name="default_margin_max">32dp</dimen>
+
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="default_padding_min">8dp</dimen>
+    <dimen name="default_padding_max">32dp</dimen>
+
+    <dimen name="divider_with">1.5dp</dimen>
+
+    <dimen name="default_body_text_size">16sp</dimen>
+    <dimen name="default_title_text_size">19sp</dimen>
+    <dimen name="default_subtitle_text_size">17sp</dimen>
+
+    <dimen name="default_user_avatar_size">50dp</dimen>
 
 </resources>

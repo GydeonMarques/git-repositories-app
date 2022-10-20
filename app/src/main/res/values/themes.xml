@@ -4,4 +4,34 @@
 
     <style name="Theme.GitRepositories" parent="Base.Theme.GitRepositories" />
 
+    <style name="ImageView.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
+    <!-- Inicio seção de estilos de textos -->
+    <style name="TextView.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/blue_dark</item>
+        <item name="android:textSize">@dimen/default_title_text_size</item>
+    </style>
+
+    <style name="TextView.Subtitle" parent="TextAppearance.Material3.TitleMedium">
+        <item name="maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/gray_dark</item>
+        <item name="android:textSize">@dimen/default_subtitle_text_size</item>
+    </style>
+
+    <style name="TextView.Body" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:ellipsize">end</item>
+        <item name="android:color">@color/gray_light</item>
+        <item name="android:textSize">@dimen/default_body_text_size</item>
+    </style>
+    <!-- Fim da seção de estilos de textos -->
+
 </resources>
