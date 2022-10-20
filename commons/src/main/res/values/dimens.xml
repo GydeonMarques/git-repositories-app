@@ -15,4 +15,6 @@
 
     <dimen name="default_user_avatar_size">50dp</dimen>
 
+    <dimen name="default_animation_view_size">150dp</dimen>
+
 </resources>

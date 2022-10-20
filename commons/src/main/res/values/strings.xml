@@ -1,3 +1,5 @@
 <resources>
 
+    <string name="loading_data__please_wait">Carregando os dados, por favor aguarde…</string>
+    <string name="there_was_an_error_loading_the_data">Houve um erro ao carregar os dados, por favor, tente novamente mais tarde, se o problema persistir, entre em contato com o suporte pelo email: supporte@email.com</string>
 </resources>
