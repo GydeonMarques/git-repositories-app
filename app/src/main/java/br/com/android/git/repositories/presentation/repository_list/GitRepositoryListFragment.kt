@@ -6,10 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.com.android.git.repositories.databinding.FragmentGitRepositoryListBinding
+import br.com.android.git.repositories.di.homeModule
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
 
 class GitRepositoryListFragment : Fragment() {
 
     private lateinit var binding: FragmentGitRepositoryListBinding
+    private val viewModel by viewModel<GitRepositoryListViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        loadKoinModules(homeModule)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,5 +29,10 @@ class GitRepositoryListFragment : Fragment() {
             binding = this
             root
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        loadKoinModules(homeModule)
     }
 }
