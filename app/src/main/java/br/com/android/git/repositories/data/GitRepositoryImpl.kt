@@ -4,7 +4,6 @@ import br.com.android.commons.data.models.GitRepositoryWrapperModel
 import br.com.android.commons.data.models.Result
 import br.com.android.commons.data.models.toModel
 import br.com.android.commons.data.service.GitApiService
-import com.fasterxml.jackson.databind.ObjectMapper
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -23,7 +22,7 @@ internal class GitRepositoryImpl(
                         return@withContext Result.Success(data.toModel())
                     }
                     errorBody()?.let { error ->
-                        return@withContext Result.Error(error.string())
+                        return@withContext Result.Error(message = error.string())
                     }
                 }
 
