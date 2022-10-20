@@ -1,6 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Base.Theme.GitRepositories" parent="Theme.Material3.DayNight.NoActionBar" />
+    <style name="Base.Theme.GitRepositories" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
 
     <style name="Theme.GitRepositories" parent="Base.Theme.GitRepositories" />
 
@@ -9,6 +19,15 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <!-- ActionBar -->
+    <style name="ActionBarStyle" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="titleTextColor">@color/white</item>
+        <item name="buttonGravity">center_vertical</item>
+        <item name="subtitleTextColor">@color/white</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="navigationIcon">@drawable/ic_arrow_back</item>
+    </style>
 
     <!-- Inicio seção de estilos de textos -->
     <style name="TextView.Title" parent="TextAppearance.Material3.TitleLarge">
