@@ -10,6 +10,7 @@ import br.com.android.commons.data.models.GitRepositoryWrapperModel
 import br.com.android.commons.data.models.Result
 import br.com.android.git.repositories.databinding.FragmentGitRepositoryListBinding
 import br.com.android.git.repositories.di.homeModule
+import br.com.android.git.repositories.presentation.repository_list.adapter.GitRepositoryAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
@@ -17,6 +18,9 @@ class GitRepositoryListFragment : Fragment() {
 
     private lateinit var binding: FragmentGitRepositoryListBinding
     private val viewModel by viewModel<GitRepositoryListViewModel>()
+    private val gitRepositoryAdapter: GitRepositoryAdapter by lazy {
+        GitRepositoryAdapter()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         loadKoinModules(homeModule)
@@ -56,6 +60,11 @@ class GitRepositoryListFragment : Fragment() {
 
     private fun renderSuccess(data: GitRepositoryWrapperModel) {
         changeLayoutVisibility(isSuccess = true)
+        with(binding.layoutGitRepositoryList) {
+            recyclerView.adapter = gitRepositoryAdapter.apply {
+                submitList(data.items)
+            }
+        }
     }
 
     private fun renderError(error: Result.Error) {
