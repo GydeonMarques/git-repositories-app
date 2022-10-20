@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Git Repositories</string>
+    <string name="git_repositories">Git Repositories</string>
+    <string name="pull_requests">Pull Requests</string>
 </resources>
