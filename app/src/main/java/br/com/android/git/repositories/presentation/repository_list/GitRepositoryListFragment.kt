@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import br.com.android.commons.data.models.GitRepositoryPageModel
 import br.com.android.commons.data.models.Result
 import br.com.android.git.repositories.databinding.FragmentGitRepositoryListBinding
 import br.com.android.git.repositories.di.homeModule
 import br.com.android.git.repositories.presentation.repository_list.adapter.GitRepositoryAdapter
+import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
@@ -40,35 +43,37 @@ class GitRepositoryListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadAllPublicRepositories()
+        setupView()
+        setupObservables()
     }
 
-    private fun loadAllPublicRepositories() {
-        viewModel.loadAllPublicRepositories()
-        viewModel.state.observe(viewLifecycleOwner) { state ->
-            when (state) {
-                is GitRepositoryState.Loading -> renderLoading()
-                is GitRepositoryState.Success -> renderSuccess(state.data)
-                is GitRepositoryState.Error -> renderError(state.error)
-            }
-        }
-    }
-
-    private fun renderLoading() {
-        changeLayoutVisibility(isLoading = true)
-    }
-
-    private fun renderSuccess(data: GitRepositoryPageModel) {
-        changeLayoutVisibility(isSuccess = true)
+    private fun setupView() {
         with(binding.layoutGitRepositoryList) {
-            recyclerView.adapter = gitRepositoryAdapter.apply {
-                submitList(data.items)
+            recyclerView.apply {
+                postponeEnterTransition()
+                adapter = gitRepositoryAdapter
+                viewTreeObserver.addOnPreDrawListener {
+                    startPostponedEnterTransition()
+                    true
+                }
             }
         }
     }
 
-    private fun renderError(error: Result.Error) {
-        changeLayoutVisibility(isError = true)
+    private fun setupObservables() {
+        gitRepositoryAdapter.addLoadStateListener {
+            when (it.refresh) {
+                is LoadState.Error -> changeLayoutVisibility(isError = true)
+                is LoadState.Loading -> changeLayoutVisibility(isLoading = true)
+                is LoadState.NotLoading -> changeLayoutVisibility(isSuccess = true)
+            }
+        }
+
+        lifecycleScope.launchWhenCreated {
+            viewModel.state.collectLatest {
+                gitRepositoryAdapter.submitData(it)
+            }
+        }
     }
 
     private fun changeLayoutVisibility(

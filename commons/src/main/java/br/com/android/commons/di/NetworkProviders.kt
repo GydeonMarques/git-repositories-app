@@ -31,7 +31,7 @@ fun provideRetrofit(baseApiUrl: String, timeOutInSeconds: Long = 30L): Retrofit 
 private fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
     return HttpLoggingInterceptor().apply {
         if (BuildConfig.DEBUG) {
-            setLevel(HttpLoggingInterceptor.Level.BODY)
+            setLevel(HttpLoggingInterceptor.Level.BASIC)
         }
     }
 }

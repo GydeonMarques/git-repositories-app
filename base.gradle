@@ -51,6 +51,9 @@ dependencies {
     //Lottie
     implementation 'com.airbnb.android:lottie:5.2.0'
 
+    //Pagging
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
     //Koin
     implementation "io.insert-koin:koin-androidx-ext:$koin_version"
     implementation "io.insert-koin:koin-androidx-scope:$koin_version"

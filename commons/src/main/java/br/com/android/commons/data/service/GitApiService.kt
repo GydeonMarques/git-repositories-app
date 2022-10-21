@@ -9,8 +9,9 @@ interface GitApiService {
 
     @GET("search/repositories")
     suspend fun loadAllPublicRepositories(
-        @Query("q") language: String = "language:Java",
-        @Query("sort") sort: String = "stars",
-        @Query("page") page: String = "1",
+        @Query("q") language: String,
+        @Query("sort") sort: String,
+        @Query("page") page: String,
+        @Query("per_page") pageSize: String,
     ): Response<GitRepositoryPageResponse>
 }

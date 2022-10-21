@@ -27,23 +27,18 @@ data class GitRepositoryOwnerResponse(
     @JsonProperty("avatar_url") val avatarUrl: String?,
 )
 
-fun GitRepositoryPageResponse.toModel(): GitRepositoryPageModel {
-    return GitRepositoryPageModel(
-        totalCount = totalCount ?: 0,
-        items = items?.map { item ->
-            GitRepositoryDataModel(
-                id = item.id ?: 0,
-                name = item.name ?: "",
-                fullName = item.fullName ?: "",
-                forksCount = item.forksCount ?: 0,
-                description = item.description ?: "",
-                watchersCount = item.watchersCount ?: 0,
-                owner = GitRepositoryOwnerModel(
-                    id = item.owner?.id ?: 0,
-                    login = item.owner?.login ?: "",
-                    avatarUrl = item.owner?.avatarUrl ?: "",
-                )
-            )
-        } ?: emptyList()
+fun GitRepositoryDataResponse.toModel(): GitRepositoryDataModel {
+    return GitRepositoryDataModel(
+        id = id ?: 0,
+        name = name ?: "",
+        fullName = fullName ?: "",
+        forksCount = forksCount ?: 0,
+        description = description ?: "",
+        watchersCount = watchersCount ?: 0,
+        owner = GitRepositoryOwnerModel(
+            id = owner?.id ?: 0,
+            login = owner?.login ?: "",
+            avatarUrl = owner?.avatarUrl ?: "",
+        )
     )
 }

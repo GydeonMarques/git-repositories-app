@@ -1,7 +1,7 @@
 package br.com.android.git.repositories.di
 
-import br.com.android.git.repositories.data.GitRepository
-import br.com.android.git.repositories.data.GitRepositoryImpl
+import br.com.android.git.repositories.data.repository.GitRepository
+import br.com.android.git.repositories.data.repository.GitRepositoryImpl
 import br.com.android.git.repositories.domain.GitRepositoryUseCase
 import br.com.android.git.repositories.domain.GitRepositoryUseCaseImpl
 import br.com.android.git.repositories.presentation.repository_list.GitRepositoryListViewModel
