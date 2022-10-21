@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import br.com.android.commons.util.PagingLoadStateAdapter
 import br.com.android.git.repositories.databinding.FragmentGitRepositoryListBinding
@@ -18,6 +20,7 @@ import org.koin.core.context.loadKoinModules
 
 class GitRepositoryListFragment : Fragment() {
 
+    private val navController: NavController by lazy { findNavController() }
     private lateinit var binding: FragmentGitRepositoryListBinding
     private val viewModel by viewModel<GitRepositoryListViewModel>()
     private val gitRepositoryAdapter: GitRepositoryAdapter by lazy {
@@ -65,17 +68,25 @@ class GitRepositoryListFragment : Fragment() {
     }
 
     private fun setupObservables() {
-        gitRepositoryAdapter.addLoadStateListener {
-            when (it.refresh) {
-                is LoadState.Error -> changeLayoutVisibility(isError = true)
-                is LoadState.Loading -> changeLayoutVisibility(isLoading = true)
-                is LoadState.NotLoading -> changeLayoutVisibility(isSuccess = true)
+        gitRepositoryAdapter.apply {
+            addOnItemClickListener {
+                navController.navigate(
+                    GitRepositoryListFragmentDirections.goToPullRequestOfRepository()
+                )
             }
-        }
 
-        lifecycleScope.launchWhenCreated {
-            viewModel.state.collectLatest {
-                gitRepositoryAdapter.submitData(it)
+            addLoadStateListener {
+                when (it.refresh) {
+                    is LoadState.Error -> changeLayoutVisibility(isError = true)
+                    is LoadState.Loading -> changeLayoutVisibility(isLoading = true)
+                    is LoadState.NotLoading -> changeLayoutVisibility(isSuccess = true)
+                }
+            }
+
+            lifecycleScope.launchWhenCreated {
+                viewModel.state.collectLatest {
+                    submitData(it)
+                }
             }
         }
     }

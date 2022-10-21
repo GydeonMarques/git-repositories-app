@@ -11,7 +11,7 @@
         android:label="@string/git_repositories"
         tools:layout="@layout/fragment_git_repository_list">
         <action
-            android:id="@+id/action_gitRepositoryListFragment_to_gitRepositoryPullsFragment"
+            android:id="@+id/go_to_pull_request_of_repository"
             app:destination="@id/git_repository_pulls"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
