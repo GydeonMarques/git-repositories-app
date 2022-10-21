@@ -1,6 +1,6 @@
 package br.com.android.commons.util
 
-data class PageParams(
+open class PageParamsRequest(
     var query: String = "",
     var sortBy: String = "",
     var pageSize: Int = PageConfig.PAGE_SIZE,

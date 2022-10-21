@@ -23,6 +23,13 @@
         android:id="@+id/git_repository_pulls"
         android:name="br.com.android.git.repositories.presentation.repository_pulls.GitRepositoryPullsFragment"
         android:label="@string/pull_requests"
-        tools:layout="@layout/fragment_git_repository_pulls" />
-    
+        tools:layout="@layout/fragment_git_repository_pulls">
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument
+            android:name="repositoryName"
+            app:argType="string" />
+    </fragment>
+
 </navigation>

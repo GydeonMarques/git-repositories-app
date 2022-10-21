@@ -71,7 +71,10 @@ class GitRepositoryListFragment : Fragment() {
         gitRepositoryAdapter.apply {
             addOnItemClickListener {
                 navController.navigate(
-                    GitRepositoryListFragmentDirections.goToPullRequestOfRepository()
+                    GitRepositoryListFragmentDirections.goToPullRequestOfRepository(
+                        it.owner.login,
+                        it.name
+                    )
                 )
             }
 

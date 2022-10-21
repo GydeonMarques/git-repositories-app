@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import br.com.android.commons.data.models.GitRepositoryDataModel
-import br.com.android.commons.util.PageParams
+import br.com.android.commons.util.PageParamsRequest
 import br.com.android.git.repositories.domain.GitRepositoryUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,12 +25,12 @@ internal class GitRepositoryListViewModel constructor(
     }
 
     private fun loadAllPublicRepositories() {
-        val params = PageParams(
+        val request = PageParamsRequest(
             query = "language:Java",
             sortBy = "stars"
         )
         viewModelScope.launch {
-            useCase.loadAllPublicRepositories(params)
+            useCase.loadAllPublicRepositories(request)
                 .cachedIn(viewModelScope)
                 .collectLatest {
                     _state.value = it
