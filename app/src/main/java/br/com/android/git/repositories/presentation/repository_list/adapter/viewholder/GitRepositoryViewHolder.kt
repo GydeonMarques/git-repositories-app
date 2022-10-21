@@ -3,7 +3,7 @@ package br.com.android.git.repositories.presentation.repository_list.adapter.vie
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.android.commons.data.models.GitRepositoryWrapperModel
+import br.com.android.commons.data.models.GitRepositoryDataModel
 import br.com.android.commons.util.loadImageByUrl
 import br.com.android.git.repositories.databinding.LayoutGitRepositoryCardItemBinding
 
@@ -19,7 +19,7 @@ internal class GitRepositoryViewHolder(
         }
     }
 
-    fun bindView(model: GitRepositoryWrapperModel.GitRepositoryDataModel) {
+    fun bindView(model: GitRepositoryDataModel) {
         binding.apply {
 
             layoutGitRepositoryItem.apply {

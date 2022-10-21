@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import br.com.android.commons.data.models.GitRepositoryWrapperModel
+import br.com.android.commons.data.models.GitRepositoryPageModel
 import br.com.android.commons.data.models.Result
 import br.com.android.git.repositories.databinding.FragmentGitRepositoryListBinding
 import br.com.android.git.repositories.di.homeModule
@@ -58,7 +58,7 @@ class GitRepositoryListFragment : Fragment() {
         changeLayoutVisibility(isLoading = true)
     }
 
-    private fun renderSuccess(data: GitRepositoryWrapperModel) {
+    private fun renderSuccess(data: GitRepositoryPageModel) {
         changeLayoutVisibility(isSuccess = true)
         with(binding.layoutGitRepositoryList) {
             recyclerView.adapter = gitRepositoryAdapter.apply {

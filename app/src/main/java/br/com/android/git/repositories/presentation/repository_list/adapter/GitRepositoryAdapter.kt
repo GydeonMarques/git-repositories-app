@@ -2,7 +2,7 @@ package br.com.android.git.repositories.presentation.repository_list.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import br.com.android.commons.data.models.GitRepositoryWrapperModel.GitRepositoryDataModel
+import br.com.android.commons.data.models.GitRepositoryDataModel
 import br.com.android.git.repositories.presentation.repository_list.adapter.diffutil.GitRepositoryDiffCallBack
 import br.com.android.git.repositories.presentation.repository_list.adapter.viewholder.GitRepositoryViewHolder
 

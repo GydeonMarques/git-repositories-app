@@ -1,6 +1,6 @@
 package br.com.android.commons.data.service
 
-import br.com.android.commons.data.models.GitRepositoryWrapperResponse
+import br.com.android.commons.data.models.GitRepositoryPageResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -12,5 +12,5 @@ interface GitApiService {
         @Query("q") language: String = "language:Java",
         @Query("sort") sort: String = "stars",
         @Query("page") page: String = "1",
-    ): Response<GitRepositoryWrapperResponse>
+    ): Response<GitRepositoryPageResponse>
 }

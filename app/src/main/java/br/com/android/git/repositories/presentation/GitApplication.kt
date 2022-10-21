@@ -1,4 +1,4 @@
-package br.com.android.git.repositories.singleton
+package br.com.android.git.repositories.presentation
 
 import android.app.Application
 import br.com.android.commons.di.networkModule
