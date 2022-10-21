@@ -1,0 +1,48 @@
+package br.com.android.commons.util
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.annotation.StringRes
+import androidx.core.view.isVisible
+import androidx.paging.LoadState
+import androidx.recyclerview.widget.RecyclerView
+import br.com.android.commons.R
+import br.com.android.commons.databinding.PagingLoadStateItemBinding
+
+class PagingLoadStateViewHolder(
+    private val context: Context,
+    private val binding: PagingLoadStateItemBinding,
+    private val onClickListenerTryAgain: () -> Unit
+) : RecyclerView.ViewHolder(binding.root) {
+
+    companion object {
+        fun getInstance(
+            parent: ViewGroup,
+            onClickListenerTryAgain: () -> Unit
+        ): PagingLoadStateViewHolder {
+            val inflater = LayoutInflater.from(parent.context)
+            val binding = PagingLoadStateItemBinding.inflate(inflater, parent, false)
+            return PagingLoadStateViewHolder(parent.context, binding, onClickListenerTryAgain)
+        }
+    }
+
+    fun bindView(state: LoadState) {
+        binding.apply {
+            progressBar.isVisible = state is LoadState.Loading
+            retryButton.isVisible = state is LoadState.Error
+            retryButton.setOnClickListener { onClickListenerTryAgain() }
+
+            textViewMessage.text = when (state) {
+                is LoadState.Error -> state.error.message
+                    ?: getString(R.string.there_was_an_error_loading_the_data)
+                is LoadState.Loading -> getString(R.string.loading_data__please_wait)
+                else -> getString(R.string.there_was_an_error_loading_the_data)
+            }
+        }
+    }
+
+    private fun getString(@StringRes res: Int): String {
+        return context.getString(res)
+    }
+}

@@ -8,8 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import br.com.android.commons.data.models.GitRepositoryPageModel
-import br.com.android.commons.data.models.Result
+import br.com.android.commons.util.PagingLoadStateAdapter
 import br.com.android.git.repositories.databinding.FragmentGitRepositoryListBinding
 import br.com.android.git.repositories.di.homeModule
 import br.com.android.git.repositories.presentation.repository_list.adapter.GitRepositoryAdapter
@@ -51,10 +50,15 @@ class GitRepositoryListFragment : Fragment() {
         with(binding.layoutGitRepositoryList) {
             recyclerView.apply {
                 postponeEnterTransition()
-                adapter = gitRepositoryAdapter
                 viewTreeObserver.addOnPreDrawListener {
                     startPostponedEnterTransition()
                     true
+                }
+                adapter = gitRepositoryAdapter.run {
+                    withLoadStateHeaderAndFooter(
+                        header = PagingLoadStateAdapter(this),
+                        footer = PagingLoadStateAdapter(this)
+                    )
                 }
             }
         }
