@@ -1,4 +1,4 @@
-package br.com.android.git.repositories.presentation.repository_pulls
+package br.com.android.git.repositories.presentation.repository_pulls.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,7 @@ import androidx.paging.LoadState
 import br.com.android.commons.util.PagingLoadStateAdapter
 import br.com.android.git.repositories.databinding.FragmentGitRepositoryPullsBinding
 import br.com.android.git.repositories.di.gitRepositoryPullsModule
+import br.com.android.git.repositories.presentation.repository_pulls.viewmodel.GitRepositoryPullsViewModel
 import br.com.android.git.repositories.presentation.repository_pulls.adapter.GitRepositoryPullsAdapter
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel

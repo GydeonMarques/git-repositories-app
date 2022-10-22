@@ -1,13 +1,10 @@
-package br.com.android.git.repositories.presentation.repository_pulls
+package br.com.android.git.repositories.presentation.repository_pulls.viewmodel
 
 import android.app.Application
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn

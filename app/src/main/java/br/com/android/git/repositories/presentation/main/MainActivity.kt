@@ -1,4 +1,4 @@
-package br.com.android.git.repositories.presentation
+package br.com.android.git.repositories.presentation.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

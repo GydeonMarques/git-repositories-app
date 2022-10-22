@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/git_repository_list"
-        android:name="br.com.android.git.repositories.presentation.repository_list.GitRepositoryListFragment"
+        android:name="br.com.android.git.repositories.presentation.repository_list.fragment.GitRepositoryListFragment"
         android:label="@string/git_repositories"
         tools:layout="@layout/fragment_git_repository_list">
         <action
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/git_repository_pulls"
-        android:name="br.com.android.git.repositories.presentation.repository_pulls.GitRepositoryPullsFragment"
+        android:name="br.com.android.git.repositories.presentation.repository_pulls.fragment.GitRepositoryPullsFragment"
         android:label="@string/pull_requests"
         tools:layout="@layout/fragment_git_repository_pulls">
         <argument

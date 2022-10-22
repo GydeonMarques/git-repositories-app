@@ -4,7 +4,7 @@ import br.com.android.git.repositories.data.repository.GitRepository
 import br.com.android.git.repositories.data.repository.GitRepositoryImpl
 import br.com.android.git.repositories.domain.GitRepositoryUseCase
 import br.com.android.git.repositories.domain.GitRepositoryUseCaseImpl
-import br.com.android.git.repositories.presentation.repository_list.GitRepositoryListViewModel
+import br.com.android.git.repositories.presentation.repository_list.viewmodel.GitRepositoryListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

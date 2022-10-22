@@ -1,6 +1,6 @@
 package br.com.android.git.repositories.di
 
-import br.com.android.git.repositories.presentation.repository_pulls.GitRepositoryPullsViewModel
+import br.com.android.git.repositories.presentation.repository_pulls.viewmodel.GitRepositoryPullsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

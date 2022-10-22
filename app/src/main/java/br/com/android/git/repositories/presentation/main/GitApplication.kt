@@ -1,4 +1,4 @@
-package br.com.android.git.repositories.presentation
+package br.com.android.git.repositories.presentation.main
 
 import android.app.Application
 import br.com.android.commons.di.networkModule

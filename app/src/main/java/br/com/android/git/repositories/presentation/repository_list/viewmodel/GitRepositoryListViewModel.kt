@@ -1,4 +1,4 @@
-package br.com.android.git.repositories.presentation.repository_list
+package br.com.android.git.repositories.presentation.repository_list.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
