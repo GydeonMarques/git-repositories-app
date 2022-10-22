@@ -48,7 +48,6 @@
 
     <style name="TextView.Body" parent="TextAppearance.Material3.BodyLarge">
         <item name="android:ellipsize">end</item>
-        <item name="android:color">@color/gray_light</item>
         <item name="android:textSize">@dimen/default_body_text_size</item>
     </style>
     <!-- Fim da seção de estilos de textos -->

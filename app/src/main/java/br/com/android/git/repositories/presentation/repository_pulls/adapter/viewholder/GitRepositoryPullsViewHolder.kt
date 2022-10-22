@@ -1,13 +1,17 @@
 package br.com.android.git.repositories.presentation.repository_pulls.adapter.viewholder
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.android.commons.data.models.GitRepositoryPullsModel
+import br.com.android.commons.util.convertFromUSFormatToDateBR
 import br.com.android.commons.util.loadImageByUrl
+import br.com.android.git.repositories.R
 import br.com.android.git.repositories.databinding.LayoutGitRepositoryCardPullItemBinding
 
 internal class GitRepositoryPullsViewHolder(
+    private val context: Context,
     private val binding: LayoutGitRepositoryCardPullItemBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -17,7 +21,7 @@ internal class GitRepositoryPullsViewHolder(
         ): GitRepositoryPullsViewHolder {
             val inflater = LayoutInflater.from(parent.context)
             val binding = LayoutGitRepositoryCardPullItemBinding.inflate(inflater, parent, false)
-            return GitRepositoryPullsViewHolder(binding)
+            return GitRepositoryPullsViewHolder(parent.context, binding)
         }
     }
 
@@ -31,9 +35,13 @@ internal class GitRepositoryPullsViewHolder(
 
             layoutGitRepositoryUserItem.apply {
                 imageViewUser.loadImageByUrl(model.user.avatarUrl)
+                textViewFullName.text = model.base.repository?.fullName.orEmpty()
                 textViewUsername.text = model.user.login
-                textViewFullName.text = model.title
             }
+
+            textViewPrCreateAt.text = context.getString(
+                R.string.create_at, model.createdAt.convertFromUSFormatToDateBR()
+            )
         }
     }
 }

@@ -8,6 +8,7 @@ import coil.load
 fun ImageView.loadImageByUrl(url: String, @DrawableRes fallback: Int = R.drawable.ic_user) {
     load(url) {
         crossfade(true)
+        error(fallback)
         fallback(fallback)
         placeholder(fallback)
     }
