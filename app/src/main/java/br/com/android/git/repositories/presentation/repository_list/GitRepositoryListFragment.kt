@@ -82,7 +82,7 @@ class GitRepositoryListFragment : Fragment() {
                 when (it.refresh) {
                     is LoadState.Error -> changeLayoutVisibility(isError = true)
                     is LoadState.Loading -> changeLayoutVisibility(isLoading = true)
-                    is LoadState.NotLoading -> changeLayoutVisibility(isSuccess = true)
+                    is LoadState.NotLoading -> changeLayoutVisibility(isSuccess = true, isEmpty = itemCount <= 0)
                 }
             }
 
@@ -97,11 +97,13 @@ class GitRepositoryListFragment : Fragment() {
     private fun changeLayoutVisibility(
         isLoading: Boolean = false,
         isSuccess: Boolean = false,
+        isEmpty: Boolean = false,
         isError: Boolean = false,
     ) {
         with(binding) {
             layoutError.root.isVisible = !isLoading && !isSuccess && isError
             layoutLoading.root.isVisible = !isError && !isSuccess && isLoading
+            layoutEmpty.root.isVisible =  !isLoading && !isError && isSuccess && isEmpty
             layoutGitRepositoryList.root.isVisible = !isLoading && !isError && isSuccess
         }
     }
