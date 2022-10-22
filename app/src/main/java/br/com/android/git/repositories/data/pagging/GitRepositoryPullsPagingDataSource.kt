@@ -13,10 +13,7 @@ internal class GitRepositoryPullsPagingDataSource(
 ) : PagingSource<Long, GitRepositoryPullsModel>() {
 
     override fun getRefreshKey(state: PagingState<Long, GitRepositoryPullsModel>): Long {
-        return state.anchorPosition?.let { anchorPosition ->
-            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
-                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
-        }?.toLong() ?: request.initialPage
+        return state.anchorPosition?.toLong() ?: request.initialPage
     }
 
     override suspend fun load(params: LoadParams<Long>): LoadResult<Long, GitRepositoryPullsModel> {
