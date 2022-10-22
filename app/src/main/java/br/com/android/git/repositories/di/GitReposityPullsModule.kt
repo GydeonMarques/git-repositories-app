@@ -5,5 +5,5 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 internal val gitRepositoryPullsModule = module(override = true) {
-    viewModel { GitRepositoryPullsViewModel(get()) }
+    viewModel { GitRepositoryPullsViewModel(get(), get()) }
 }

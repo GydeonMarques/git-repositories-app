@@ -5,6 +5,7 @@ data class GitRepositoryPullsModel(
     val title: String,
     val body: String,
     val number: Long,
+    val pullURL: String?,
     val createdAt: String,
     val base: GitRepositoryBaseModel,
     val user: GitRepositoryOwnerModel

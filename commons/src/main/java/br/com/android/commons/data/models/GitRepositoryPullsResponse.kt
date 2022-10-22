@@ -9,9 +9,11 @@ data class GitRepositoryPullsDataResponse(
     @JsonProperty("body") val body: String?,
     @JsonProperty("title") val title: String?,
     @JsonProperty("number") val number: Long?,
+    @JsonProperty("html_url") val pullURL: String?,
     @JsonProperty("created_at") val createdAt: String?,
     @JsonProperty("base") val base: GitRepositoryBaseResponse?,
     @JsonProperty("user") val user: GitRepositoryOwnerResponse?,
+
 )
 
 fun GitRepositoryPullsDataResponse.toModel(): GitRepositoryPullsModel {
@@ -20,6 +22,7 @@ fun GitRepositoryPullsDataResponse.toModel(): GitRepositoryPullsModel {
         title = title ?: "",
         body = body ?: "",
         number = number ?: 0,
+        pullURL = pullURL ?: "",
         createdAt = createdAt ?: "",
         user = GitRepositoryOwnerModel(
             id = user?.id ?: 0L,

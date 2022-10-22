@@ -50,8 +50,6 @@ class GitRepositoryPullsFragment : Fragment() {
         loadAllPullsOfRepository()
     }
 
-
-
     private fun setupView() {
         with(binding.layoutGitRepositoryPulls) {
             recyclerView.apply {
@@ -72,6 +70,11 @@ class GitRepositoryPullsFragment : Fragment() {
 
     private fun setupObservables() {
         gitRepositoryPullsAdapter.apply {
+
+            addOnItemClickListener { model->
+                model.pullURL?.let { viewModel.openPullRequestPage(it) }
+            }
+
             addLoadStateListener {
                 when (it.refresh) {
                     is LoadState.Error -> changeLayoutVisibility(isError = true)

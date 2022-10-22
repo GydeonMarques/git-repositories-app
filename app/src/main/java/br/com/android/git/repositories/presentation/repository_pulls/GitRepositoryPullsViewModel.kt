@@ -1,5 +1,12 @@
 package br.com.android.git.repositories.presentation.repository_pulls
 
+import android.app.Application
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
+import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -13,8 +20,9 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 internal class GitRepositoryPullsViewModel(
+    application: Application,
     private val useCase: GitRepositoryUseCase
-) : ViewModel() {
+) : AndroidViewModel(application) {
 
     private val _state = MutableStateFlow<PagingData<GitRepositoryPullsModel>>(PagingData.empty())
     val state: Flow<PagingData<GitRepositoryPullsModel>> get() = _state
@@ -31,5 +39,12 @@ internal class GitRepositoryPullsViewModel(
                     _state.value = it
                 }
         }
+    }
+
+    fun openPullRequestPage(url: String){
+            ContextCompat.startActivity(getApplication(), Intent(Intent.ACTION_VIEW).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                data = Uri.parse(url)
+            }, null)
     }
 }

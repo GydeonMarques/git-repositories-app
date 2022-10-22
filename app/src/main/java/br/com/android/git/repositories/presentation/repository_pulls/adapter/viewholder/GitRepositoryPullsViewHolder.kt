@@ -11,23 +11,29 @@ import br.com.android.commons.util.loadImageByUrl
 import br.com.android.git.repositories.R
 import br.com.android.git.repositories.databinding.LayoutGitRepositoryCardPullItemBinding
 
+typealias OnRepositoryPullItemClickListener = ((model: GitRepositoryPullsModel) -> Unit)?
+
 internal class GitRepositoryPullsViewHolder(
     private val context: Context,
     private val binding: LayoutGitRepositoryCardPullItemBinding,
+    private val onItemClickListener: OnRepositoryPullItemClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun getInstance(
             parent: ViewGroup,
+            onItemClickListener: OnRepositoryPullItemClickListener
         ): GitRepositoryPullsViewHolder {
             val inflater = LayoutInflater.from(parent.context)
             val binding = LayoutGitRepositoryCardPullItemBinding.inflate(inflater, parent, false)
-            return GitRepositoryPullsViewHolder(parent.context, binding)
+            return GitRepositoryPullsViewHolder(parent.context, binding, onItemClickListener)
         }
     }
 
     fun bindView(model: GitRepositoryPullsModel) {
         binding.apply {
+
+            onItemClickListener?.let { cardGitRepositoryPull.setOnClickListener { it(model) } }
 
             layoutGitRepositoryItem.apply {
                 textViewRepositoryTitle.text = model.title
