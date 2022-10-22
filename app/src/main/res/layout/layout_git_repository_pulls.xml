@@ -5,57 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/header_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/gray_light"
-        android:padding="@dimen/default_padding"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_view_pr_opened"
-            style="@style/TextView.Body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/default_margin_min"
-            android:maxLines="1"
-            android:textColor="@color/amber"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/header_divider"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="16 Abertos" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/header_divider"
-            style="@style/TextView.Body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/text_view_pr_closed"
-            app:layout_constraintStart_toEndOf="@id/text_view_pr_opened"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="/" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_view_pr_closed"
-            style="@style/TextView.Body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_margin_min"
-            android:maxLines="1"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/header_divider"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="800 Fechados" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="0dp"
@@ -64,7 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_container"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/layout_git_repository_card_pull_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

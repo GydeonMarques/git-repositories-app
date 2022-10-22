@@ -3,6 +3,7 @@ package br.com.android.git.repositories.presentation.repository_pulls.adapter.vi
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import br.com.android.commons.data.models.GitRepositoryPullsModel
 import br.com.android.commons.util.convertFromUSFormatToDateBR
@@ -31,6 +32,7 @@ internal class GitRepositoryPullsViewHolder(
             layoutGitRepositoryItem.apply {
                 textViewRepositoryTitle.text = model.title
                 textViewRepositoryDescription.text = model.body
+                textViewRepositoryDescription.isVisible = model.body.isNotEmpty()
             }
 
             layoutGitRepositoryUserItem.apply {
