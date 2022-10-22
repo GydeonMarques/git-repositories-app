@@ -12,6 +12,7 @@
     <color name="white">#FFFFFF</color>
     <color name="amber">#df9214</color>
     <color name="blue_dark">#4777ae</color>
-    <color name="gray_light">#d5d5d5</color>
-    <color name="gray_dark">#c5c5c5</color>
+    <color name="gray_light">#7E7D7D</color>
+    <color name="gray_dark">#353535</color>
+    <color name="gray_light_1">#C3C3C3</color>
 </resources>

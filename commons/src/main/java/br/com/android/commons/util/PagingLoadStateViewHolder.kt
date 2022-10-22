@@ -29,8 +29,8 @@ class PagingLoadStateViewHolder(
 
     fun bindView(state: LoadState) {
         binding.apply {
-            progressBar.isVisible = state is LoadState.Loading
             retryButton.isVisible = state is LoadState.Error
+            viewAnimation.isVisible = state is LoadState.Loading
             retryButton.setOnClickListener { onClickListenerTryAgain() }
 
             textViewMessage.text = when (state) {

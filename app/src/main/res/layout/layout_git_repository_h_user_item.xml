@@ -8,8 +8,8 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image_view_user"
-        android:layout_width="@dimen/default_user_avatar_size"
-        android:layout_height="@dimen/default_user_avatar_size"
+        android:layout_width="@dimen/default_user_avatar_large"
+        android:layout_height="@dimen/default_user_avatar_large"
         android:src="@drawable/ic_user"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,10 +17,10 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_view_username"
-        style="@style/TextView.Title"
+        style="@style/TextView.Title.Small"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin_medium"
         android:gravity="center_vertical"
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,12 +30,13 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_view_full_name"
-        style="@style/TextView.Body"
+        style="@style/TextView.Body.Medium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin_medium"
         android:gravity="center_vertical"
         android:maxLines="1"
+        android:textColor="@color/gray_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/image_view_user"
         app:layout_constraintTop_toBottomOf="@id/text_view_username"

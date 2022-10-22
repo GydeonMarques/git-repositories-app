@@ -7,7 +7,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_view_repository_title"
-        style="@style/TextView.Title"
+        style="@style/TextView.Title.Small"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:maxLines="1"
@@ -18,7 +18,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_view_repository_description"
-        style="@style/TextView.Body"
+        style="@style/TextView.Body.Large"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:maxLines="2"
