@@ -13,13 +13,16 @@ internal class GitRepositoryPullsPagingDataSource(
 ) : PagingSource<Long, GitRepositoryPullsModel>() {
 
     override fun getRefreshKey(state: PagingState<Long, GitRepositoryPullsModel>): Long {
-        return request.initialPage
+        return state.anchorPosition?.let { anchorPosition ->
+            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
+                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
+        }?.toLong() ?: request.initialPage
     }
 
     override suspend fun load(params: LoadParams<Long>): LoadResult<Long, GitRepositoryPullsModel> {
         return try {
 
-            val currentPage = params.key ?: 0
+            val currentPage = params.key ?: request.initialPage
 
             val response = service.loadAllPullsOfRepository(
                 sort = request.sortBy,
@@ -34,7 +37,7 @@ internal class GitRepositoryPullsPagingDataSource(
                 response.body() != null -> {
                     LoadResult.Page(
                         data = response.body()?.map { it.toModel() } ?: emptyList(),
-                        prevKey = if (currentPage <= 0L) null else currentPage - 1,
+                        prevKey = if (currentPage <= request.initialPage) null else currentPage - 1,
                         nextKey = if (response.body()?.isEmpty() == true) null else currentPage + 1,
                     )
                 }
