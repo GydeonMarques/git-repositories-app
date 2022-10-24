@@ -11,7 +11,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import br.com.android.commons.util.PagingLoadStateAdapter
 import br.com.android.git.repositories.databinding.FragmentGitRepositoryPullBinding
-import br.com.android.git.repositories.di.gitRepositoryPullsModule
+import br.com.android.git.repositories.di.gitRepositoryPullModule
 import br.com.android.git.repositories.presentation.repository_pulls.viewmodel.GitRepositoryPullViewModel
 import br.com.android.git.repositories.presentation.repository_pulls.adapter.GitRepositoryPullsAdapter
 import kotlinx.coroutines.flow.collectLatest
@@ -29,7 +29,7 @@ class GitRepositoryPullFragment : Fragment() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        loadKoinModules(gitRepositoryPullsModule)
+        loadKoinModules(gitRepositoryPullModule)
         super.onCreate(savedInstanceState)
     }
 
@@ -114,6 +114,6 @@ class GitRepositoryPullFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        unloadKoinModules(gitRepositoryPullsModule)
+        unloadKoinModules(gitRepositoryPullModule)
     }
 }

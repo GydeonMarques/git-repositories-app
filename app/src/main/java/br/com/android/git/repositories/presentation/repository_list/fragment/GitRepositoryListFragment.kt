@@ -12,9 +12,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import br.com.android.commons.util.PagingLoadStateAdapter
 import br.com.android.git.repositories.databinding.FragmentGitRepositoryListBinding
-import br.com.android.git.repositories.di.homeModule
-import br.com.android.git.repositories.presentation.repository_list.viewmodel.GitRepositoryListViewModel
+import br.com.android.git.repositories.di.gitRepositoryListModule
 import br.com.android.git.repositories.presentation.repository_list.adapter.GitRepositoryAdapter
+import br.com.android.git.repositories.presentation.repository_list.viewmodel.GitRepositoryListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
@@ -29,7 +29,7 @@ class GitRepositoryListFragment : Fragment() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        loadKoinModules(homeModule)
+        loadKoinModules(gitRepositoryListModule)
         super.onCreate(savedInstanceState)
     }
 
@@ -111,6 +111,6 @@ class GitRepositoryListFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        loadKoinModules(homeModule)
+        loadKoinModules(gitRepositoryListModule)
     }
 }

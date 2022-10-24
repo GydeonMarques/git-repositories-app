@@ -8,7 +8,7 @@ import br.com.android.git.repositories.presentation.repository_list.viewmodel.Gi
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-internal val homeModule = module(override = true) {
+internal val gitRepositoryListModule = module(override = true) {
     viewModel { GitRepositoryListViewModel(get()) }
     factory<GitRepository> { GitRepositoryImpl(get()) }
     factory<GitRepositoryUseCase> { GitRepositoryUseCaseImpl(get()) }

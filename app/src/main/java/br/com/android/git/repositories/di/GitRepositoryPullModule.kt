@@ -4,6 +4,6 @@ import br.com.android.git.repositories.presentation.repository_pulls.viewmodel.G
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-internal val gitRepositoryPullsModule = module(override = true) {
+internal val gitRepositoryPullModule = module(override = true) {
     viewModel { GitRepositoryPullViewModel(get(), get()) }
 }
