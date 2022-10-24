@@ -2,7 +2,7 @@ package br.com.android.git.repositories.domain
 
 import androidx.paging.PagingData
 import br.com.android.commons.data.models.GitRepositoryDataModel
-import br.com.android.commons.data.models.GitRepositoryPullsModel
+import br.com.android.commons.data.models.GitRepositoryPullModel
 import br.com.android.commons.data.models.GitRepositoryPullsRequest
 import br.com.android.commons.util.PageParamsRequest
 import br.com.android.git.repositories.data.repository.GitRepository
@@ -16,7 +16,7 @@ internal class GitRepositoryUseCaseImpl(
         return repository.loadAllPublicRepositories(request)
     }
 
-    override suspend fun loadAllPullsOfRepository(request: GitRepositoryPullsRequest): Flow<PagingData<GitRepositoryPullsModel>> {
+    override suspend fun loadAllPullsOfRepository(request: GitRepositoryPullsRequest): Flow<PagingData<GitRepositoryPullModel>> {
         return repository.loadAllPullsOfRepository(request)
     }
 }

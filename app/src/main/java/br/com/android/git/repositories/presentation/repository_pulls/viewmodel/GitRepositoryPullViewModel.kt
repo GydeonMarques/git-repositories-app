@@ -8,7 +8,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import br.com.android.commons.data.models.GitRepositoryPullsModel
+import br.com.android.commons.data.models.GitRepositoryPullModel
 import br.com.android.commons.data.models.GitRepositoryPullsRequest
 import br.com.android.git.repositories.domain.GitRepositoryUseCase
 import kotlinx.coroutines.flow.Flow
@@ -16,13 +16,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-internal class GitRepositoryPullsViewModel(
+internal class GitRepositoryPullViewModel(
     application: Application,
     private val useCase: GitRepositoryUseCase
 ) : AndroidViewModel(application) {
 
-    private val _state = MutableStateFlow<PagingData<GitRepositoryPullsModel>>(PagingData.empty())
-    val state: Flow<PagingData<GitRepositoryPullsModel>> get() = _state
+    private val _state = MutableStateFlow<PagingData<GitRepositoryPullModel>>(PagingData.empty())
+    val state: Flow<PagingData<GitRepositoryPullModel>> get() = _state
 
     fun loadAllPullsOfRepository(username: String, repositoryName: String) {
         val request = GitRepositoryPullsRequest(

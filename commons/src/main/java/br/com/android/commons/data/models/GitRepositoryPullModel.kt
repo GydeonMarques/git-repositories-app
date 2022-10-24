@@ -1,6 +1,6 @@
 package br.com.android.commons.data.models
 
-data class GitRepositoryPullsModel(
+data class GitRepositoryPullModel(
     val id: Long,
     val title: String,
     val body: String,

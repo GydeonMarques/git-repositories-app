@@ -13,7 +13,7 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 internal class GitRepositoryPagingListDataSourceTest {
 
-    private var pagingDataSource: GitRepositoryPagingDataSource = mockk()
+    private var pagingDataSource: GitRepositoryListPagingDataSource = mockk()
 
     @Test
     fun `WHEN load is calling THEN it should return a SUCCESS page`() {

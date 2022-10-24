@@ -16,8 +16,8 @@ data class GitRepositoryPullsDataResponse(
 
 )
 
-fun GitRepositoryPullsDataResponse.toModel(): GitRepositoryPullsModel {
-    return GitRepositoryPullsModel(
+fun GitRepositoryPullsDataResponse.toModel(): GitRepositoryPullModel {
+    return GitRepositoryPullModel(
         id = id ?: 0L,
         title = title ?: "",
         body = body ?: "",

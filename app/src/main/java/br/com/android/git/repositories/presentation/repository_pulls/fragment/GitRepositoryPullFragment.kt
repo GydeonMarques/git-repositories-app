@@ -10,20 +10,20 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import br.com.android.commons.util.PagingLoadStateAdapter
-import br.com.android.git.repositories.databinding.FragmentGitRepositoryPullsBinding
+import br.com.android.git.repositories.databinding.FragmentGitRepositoryPullBinding
 import br.com.android.git.repositories.di.gitRepositoryPullsModule
-import br.com.android.git.repositories.presentation.repository_pulls.viewmodel.GitRepositoryPullsViewModel
+import br.com.android.git.repositories.presentation.repository_pulls.viewmodel.GitRepositoryPullViewModel
 import br.com.android.git.repositories.presentation.repository_pulls.adapter.GitRepositoryPullsAdapter
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 
-class GitRepositoryPullsFragment : Fragment() {
+class GitRepositoryPullFragment : Fragment() {
 
-    private val args by navArgs<GitRepositoryPullsFragmentArgs>()
-    private lateinit var binding: FragmentGitRepositoryPullsBinding
-    private val viewModel by viewModel<GitRepositoryPullsViewModel>()
+    private val args by navArgs<GitRepositoryPullFragmentArgs>()
+    private lateinit var binding: FragmentGitRepositoryPullBinding
+    private val viewModel by viewModel<GitRepositoryPullViewModel>()
     private val gitRepositoryPullsAdapter: GitRepositoryPullsAdapter by lazy {
         GitRepositoryPullsAdapter()
     }
@@ -38,7 +38,7 @@ class GitRepositoryPullsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return FragmentGitRepositoryPullsBinding.inflate(inflater, container, false).run {
+        return FragmentGitRepositoryPullBinding.inflate(inflater, container, false).run {
             binding = this
             root
         }

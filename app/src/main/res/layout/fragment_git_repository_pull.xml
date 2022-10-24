@@ -45,7 +45,7 @@
     <!-- Git repository pulls -->
     <include
         android:id="@+id/layout_git_repository_pulls"
-        layout="@layout/layout_git_repository_pulls"
+        layout="@layout/layout_git_repository_pull"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="gone"

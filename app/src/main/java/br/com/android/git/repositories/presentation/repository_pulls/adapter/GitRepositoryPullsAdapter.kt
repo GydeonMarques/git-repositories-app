@@ -2,13 +2,13 @@ package br.com.android.git.repositories.presentation.repository_pulls.adapter
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import br.com.android.commons.data.models.GitRepositoryPullsModel
-import br.com.android.git.repositories.presentation.repository_pulls.adapter.diffutil.GitRepositoryPullsDiffCallBack
+import br.com.android.commons.data.models.GitRepositoryPullModel
+import br.com.android.git.repositories.presentation.repository_pulls.adapter.diffutil.GitRepositoryPullDiffCallBack
 import br.com.android.git.repositories.presentation.repository_pulls.adapter.viewholder.GitRepositoryPullsViewHolder
 import br.com.android.git.repositories.presentation.repository_pulls.adapter.viewholder.OnRepositoryPullItemClickListener
 
-internal class GitRepositoryPullsAdapter : PagingDataAdapter<GitRepositoryPullsModel, GitRepositoryPullsViewHolder>(
-    GitRepositoryPullsDiffCallBack()
+internal class GitRepositoryPullsAdapter : PagingDataAdapter<GitRepositoryPullModel, GitRepositoryPullsViewHolder>(
+    GitRepositoryPullDiffCallBack()
 ) {
 
     private var onItemClickListener: OnRepositoryPullItemClickListener = null

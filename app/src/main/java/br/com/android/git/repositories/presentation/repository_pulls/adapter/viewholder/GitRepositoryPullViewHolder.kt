@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import br.com.android.commons.data.models.GitRepositoryPullsModel
+import br.com.android.commons.data.models.GitRepositoryPullModel
 import br.com.android.commons.util.convertFromUSFormatToDateBR
 import br.com.android.commons.util.loadImageByUrl
 import br.com.android.git.repositories.R
 import br.com.android.git.repositories.databinding.LayoutGitRepositoryCardPullItemBinding
 
-typealias OnRepositoryPullItemClickListener = ((model: GitRepositoryPullsModel) -> Unit)?
+typealias OnRepositoryPullItemClickListener = ((model: GitRepositoryPullModel) -> Unit)?
 
 internal class GitRepositoryPullsViewHolder(
     private val context: Context,
@@ -30,7 +30,7 @@ internal class GitRepositoryPullsViewHolder(
         }
     }
 
-    fun bindView(model: GitRepositoryPullsModel) {
+    fun bindView(model: GitRepositoryPullModel) {
         binding.apply {
 
             onItemClickListener?.let { cardGitRepositoryPull.setOnClickListener { it(model) } }

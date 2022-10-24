@@ -2,9 +2,9 @@ package br.com.android.git.repositories.resources
 
 import br.com.android.commons.data.models.*
 
-object GitRepositoryPullsDataModelTest {
+object GitRepositoryPullDataModelTest {
 
-    val gitRepositoryDataModel = GitRepositoryPullsModel(
+    val gitRepositoryDataModel = GitRepositoryPullModel(
         id = 1L,
         body = "Body",
         title = "Title",
@@ -33,7 +33,7 @@ object GitRepositoryPullsDataModelTest {
         ),
     )
 
-    val gitRepositoryPullsDataModelList = arrayListOf<GitRepositoryPullsModel>().apply {
+    val gitRepositoryPullsDataModelList = arrayListOf<GitRepositoryPullModel>().apply {
         (0..5).forEach { add(gitRepositoryDataModel.copy(id = it.toLong())) }
     }
 }

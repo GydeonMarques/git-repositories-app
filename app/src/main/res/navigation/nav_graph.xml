@@ -21,9 +21,9 @@
 
     <fragment
         android:id="@+id/git_repository_pulls"
-        android:name="br.com.android.git.repositories.presentation.repository_pulls.fragment.GitRepositoryPullsFragment"
+        android:name="br.com.android.git.repositories.presentation.repository_pulls.fragment.GitRepositoryPullFragment"
         android:label="@string/pull_requests"
-        tools:layout="@layout/fragment_git_repository_pulls">
+        tools:layout="@layout/fragment_git_repository_pull">
         <argument
             android:name="username"
             app:argType="string" />

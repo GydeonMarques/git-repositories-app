@@ -1,7 +1,7 @@
 package br.com.android.git.repositories.data.pagging
 
 import androidx.paging.PagingSource
-import br.com.android.git.repositories.resources.GitRepositoryPagingPullsDataTest
+import br.com.android.git.repositories.resources.GitRepositoryPagingPullDataTest
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -11,17 +11,17 @@ import org.junit.Test
 
 
 @OptIn(ExperimentalCoroutinesApi::class)
-internal class GitRepositoryPagingPullsDataSourceTest {
+internal class GitRepositoryPagingPullDataSourceTest {
 
-    private var pagingDataSource: GitRepositoryPullsPagingDataSource = mockk()
+    private var pagingDataSource: GitRepositoryPullPagingDataSource = mockk()
 
     @Test
     fun `WHEN load is calling THEN it should return a SUCCESS page`() {
         runTest {
 
             //given
-            val loadParams = GitRepositoryPagingPullsDataTest.loadParams
-            val expectedResponse = GitRepositoryPagingPullsDataTest.pageResultSuccess
+            val loadParams = GitRepositoryPagingPullDataTest.loadParams
+            val expectedResponse = GitRepositoryPagingPullDataTest.pageResultSuccess
 
             //when
             coEvery { pagingDataSource.load(loadParams) } returns expectedResponse

@@ -2,38 +2,40 @@ package br.com.android.git.repositories.data.pagging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import br.com.android.commons.data.models.GitRepositoryDataModel
+import br.com.android.commons.data.models.GitRepositoryPullModel
+import br.com.android.commons.data.models.GitRepositoryPullsRequest
 import br.com.android.commons.data.models.toModel
 import br.com.android.commons.data.service.GitApiService
-import br.com.android.commons.util.PageParamsRequest
 
-internal class GitRepositoryPagingDataSource(
+internal class GitRepositoryPullPagingDataSource(
     private val service: GitApiService,
-    private val request: PageParamsRequest,
-) : PagingSource<Long, GitRepositoryDataModel>() {
+    private val request: GitRepositoryPullsRequest
+) : PagingSource<Long, GitRepositoryPullModel>() {
 
-    override fun getRefreshKey(state: PagingState<Long, GitRepositoryDataModel>): Long {
+    override fun getRefreshKey(state: PagingState<Long, GitRepositoryPullModel>): Long {
         return state.anchorPosition?.toLong() ?: request.initialPage
     }
 
-    override suspend fun load(params: LoadParams<Long>): LoadResult<Long, GitRepositoryDataModel> {
+    override suspend fun load(params: LoadParams<Long>): LoadResult<Long, GitRepositoryPullModel> {
         return try {
 
             val currentPage = params.key ?: request.initialPage
 
-            val response = service.loadAllPublicRepositories(
+            val response = service.loadAllPullsOfRepository(
                 sort = request.sortBy,
-                language = request.query,
                 page = currentPage.toString(),
-                pageSize = request.pageSize.toString()
+                language = request.query,
+                pageSize = request.pageSize.toString(),
+                username = request.username.lowercase(),
+                repositoryName = request.repositoryName.lowercase()
             )
 
             when {
                 response.body() != null -> {
                     LoadResult.Page(
-                        data = response.body()?.items?.map { it.toModel() } ?: emptyList(),
+                        data = response.body()?.map { it.toModel() } ?: emptyList(),
                         prevKey = if (currentPage <= request.initialPage) null else currentPage - 1,
-                        nextKey = if (response.body()?.items?.isEmpty() == true) null else currentPage + 1
+                        nextKey = if (response.body()?.isEmpty() == true) null else currentPage + 1,
                     )
                 }
                 response.errorBody() != null -> {
